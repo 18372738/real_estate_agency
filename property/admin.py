@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Flat
+from .models import Flat, Complaits
 
 
 class FlatAdmin(admin.ModelAdmin):
@@ -11,3 +11,9 @@ class FlatAdmin(admin.ModelAdmin):
     list_filter = ('new_building', 'floor', 'rooms_number', 'has_balcony')
 
 admin.site.register(Flat, FlatAdmin)
+
+
+class ComplaitsAdmin(admin.ModelAdmin):
+    raw_id_fields = ("user", "appartment",)
+
+admin.site.register(Complaits, ComplaitsAdmin)
