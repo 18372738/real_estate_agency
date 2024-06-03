@@ -48,12 +48,13 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
+    liked_by = models.ManyToManyField(User, verbose_name="Кто лайкнул")
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
 
-class Complaits(models.Model):
+class Complait(models.Model):
     user = models.ForeignKey(User, verbose_name="Кто пожаловался", on_delete=models.CASCADE)
     appartment = models.ForeignKey(Flat, verbose_name="Квартира, на которую пожаловались", on_delete=models.CASCADE)
     complait = models.TextField("Жалоба")
