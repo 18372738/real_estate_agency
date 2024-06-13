@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Flat, Complait
+from .models import Flat, Complait, Owner
 
 
 class FlatAdmin(admin.ModelAdmin):
@@ -17,3 +17,9 @@ class ComplaitAdmin(admin.ModelAdmin):
     raw_id_fields = ("user", "appartment",)
 
 admin.site.register(Complait, ComplaitAdmin)
+
+
+class OwnerAdmin(admin.ModelAdmin):
+    raw_id_fields = ("own_property",)
+
+admin.site.register(Owner, OwnerAdmin)
