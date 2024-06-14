@@ -20,7 +20,7 @@ admin.site.register(Complait, ComplaitAdmin)
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    # raw_id_fields = ('own_property',)
+    raw_id_fields = ('property',)
     list_display = ('owner',)
 
 admin.site.register(Owner, OwnerAdmin)
