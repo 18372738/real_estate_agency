@@ -14,12 +14,13 @@ admin.site.register(Flat, FlatAdmin)
 
 
 class ComplaitAdmin(admin.ModelAdmin):
-    raw_id_fields = ("user", "appartment",)
+    raw_id_fields = ('user', 'appartment',)
 
 admin.site.register(Complait, ComplaitAdmin)
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ("own_property",)
+    # raw_id_fields = ('own_property',)
+    list_display = ('owner',)
 
 admin.site.register(Owner, OwnerAdmin)

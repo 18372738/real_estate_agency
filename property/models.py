@@ -50,7 +50,7 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
-    liked_by = models.ManyToManyField(User, verbose_name="Кто лайкнул", related_name="liked_appartment")
+    liked_by = models.ManyToManyField(User, verbose_name="Кто лайкнул", blank=True, related_name="liked_appartment")
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
@@ -66,4 +66,4 @@ class Owner(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
     phonenumber = models.CharField('Номер владельца', max_length=20)
     pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, null=True)
-    own_property = models.ManyToManyField(Flat, verbose_name='Квартиры в собственности', blank=True, related_name="owner_property")
+    # own_property = models.ManyToManyField(Flat, verbose_name='Квартиры в собственности', blank=True, related_name="owner_property")
