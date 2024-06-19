@@ -6,7 +6,7 @@ from django.db import migrations
 def fill_field_property(apps, shcema_epitor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for owner in Owner.objects.all():
+    for owner in Owner.objects.all().interator:
         flat = Flat.objects.filter(owner=owner.owner)
         owner.property.set(flat)
         owner.save()

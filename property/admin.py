@@ -1,35 +1,35 @@
 from django.contrib import admin
 
-from .models import Flat, Complait, Owner
+from .models import Flat, Complaint, Owner
 
 
-class PropertyInline(admin.TabularInline):
+class ModelInline(admin.TabularInline):
     model = Owner.property.through
     raw_id_fields = ('owner', 'flat')
 
 
+@admin.register(Flat)
+
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ('town',)
     readonly_fields = ['created_at']
-    list_display = ('address', 'price', 'new_building', 'construction_year', 'town', 'owners_phonenumber', 'owner_pure_phone')
+    list_display = ('address', 'price', 'new_building', 'construction_year', 'town',)
     list_editable = ('new_building',)
     list_filter = ('new_building', 'floor', 'rooms_number', 'has_balcony')
     raw_id_fields = ('liked_by',)
     inlines = [
-        PropertyInline,
+        ModelInline,
     ]
 
-admin.site.register(Flat, FlatAdmin)
 
+@admin.register(Complaint)
 
 class ComplaitAdmin(admin.ModelAdmin):
     raw_id_fields = ('user', 'appartment',)
 
-admin.site.register(Complait, ComplaitAdmin)
 
+@admin.register(Owner)
 
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('property',)
-    list_display = ('owner',)
-
-admin.site.register(Owner, OwnerAdmin)
+    list_display = ('name',)

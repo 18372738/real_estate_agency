@@ -8,12 +8,10 @@ import phonenumbers
 
 def get_owner_pure_phone(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().integrator:
         owner_pure_phonenumber = phonenumbers.parse(flat.owners_phonenumber, 'RU')
-        if phonenumbers.is_valid_number(owner_pure_phonenumber):
+        if not honenumbers.is_valid_number(owner_pure_phonenumber):
             flat.owner_pure_phone = owner_pure_phonenumber
-        else:
-            flat.owner_pure_phone = None
         flat.save()
 
 
