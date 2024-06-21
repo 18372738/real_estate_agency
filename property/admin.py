@@ -9,7 +9,6 @@ class ModelInline(admin.TabularInline):
 
 
 @admin.register(Flat)
-
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ('town',)
     readonly_fields = ['created_at']
@@ -23,13 +22,11 @@ class FlatAdmin(admin.ModelAdmin):
 
 
 @admin.register(Complaint)
-
 class ComplaitAdmin(admin.ModelAdmin):
     raw_id_fields = ('user', 'appartment',)
 
 
 @admin.register(Owner)
-
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('property',)
     list_display = ('name',)
